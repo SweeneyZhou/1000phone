@@ -13,19 +13,14 @@ public class Test2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("请输入金额:");
-        int total = scanner.nextInt();
+        double total = scanner.nextDouble();
         System.out.println("您需要付:");
-        switch (total/1000){
-            case 0:
-                System.out.println(total+"元");break;
-            case 1:
-            case 2:
-                System.out.println(total*0.95+"元");break;
-            case 3:
-            case 4:
-                System.out.println(total*0.9+"元");break;
-            default:
-                System.out.println(total*0.8+"元");
-        }
+        if (total>5000){
+            System.out.println(total*.8+"元");
+        }else if(total>3000){
+            System.out.println(total*.9+"元");
+        }else if (total>1000){
+            System.out.println(total*.95+"元");
+        }else System.out.println(total+"元");
     }
 }

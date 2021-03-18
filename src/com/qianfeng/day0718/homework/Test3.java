@@ -9,10 +9,10 @@ public class Test3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("请输入年月日以空格键隔开:");
+        int sum=0;
         int year = scanner.nextInt();
         int month = scanner.nextInt();
-        int date = scanner.nextInt();
-        int sum=0;
+        int day = scanner.nextInt();
         switch (month-1){
             case 11:sum+=30;
             case 10:sum+=31;
@@ -26,12 +26,11 @@ public class Test3 {
             case 2:
                 sum+=(year%4==0&&year%100!=0||year%400==0)?29:28;
             case 1:sum+=31;
-            case 0:sum+=date;break;
+            case 0:sum+=day;break;
             default:
                 System.out.println("月份错误！");
                 return;
         }
-        System.out.println(year+" "+month+" "+date);
-        System.out.println(sum);
+        System.out.println("这一年已经过去了"+sum+"天.");
     }
 }
