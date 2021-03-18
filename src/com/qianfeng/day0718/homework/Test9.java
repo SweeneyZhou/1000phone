@@ -2,6 +2,7 @@ package com.qianfeng.day0718.homework;
 
 /*
  * 3.求一张0.0001米的纸对折多少次，厚度会超过8848米
+ * 结果：24
  * */
 public class Test9 {
     static final double LENGTH = 0.001;
