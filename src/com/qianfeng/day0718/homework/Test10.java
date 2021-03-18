@@ -26,7 +26,7 @@ public class Test10 {
         while (i < N) {//b在第N项时退出循环
             b = a + b;//b后移1位
             a = b - a;//a后移1位
-            i++;//a项数+1
+            i++;//项数+1
         }
         System.out.println(b);
     }
@@ -38,7 +38,7 @@ public class Test10 {
         while (i < N) {//第N项为a+b时退出循环
             b = a + b;//b后移1位
             a = b - a;//a后移1位
-            i++;//a项数+1
+            i++;//项数+1
         }
         System.out.println(a + b);
     }
