@@ -11,7 +11,7 @@ public class Test9 {
     public static void main(String[] args) {
         double length = LENGTH;
         int count = 0;
-        while (length <=THK) {
+        while (length <= THK) {
             length *= 2;
             count++;
         }
