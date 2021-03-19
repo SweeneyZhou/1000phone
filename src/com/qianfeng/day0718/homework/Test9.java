@@ -5,7 +5,7 @@ package com.qianfeng.day0718.homework;
  * 结果：24
  * */
 public class Test9 {
-    static final double LENGTH = 0.001;
+    static final double LENGTH = 0.0001;
     static final double THK = 8848;
 
     public static void main(String[] args) {
