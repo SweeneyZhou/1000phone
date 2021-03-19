@@ -20,7 +20,7 @@ public class Test11 {
             sum += height * 1.5;
             height /= 2;//第i次弹起的高度
         }
-        System.out.println("第i次弹起的高度:" + height);
-        System.out.println("第i次弹起历经的总路程:" + sum);
+        System.out.println("第"+COUNT+"弹起的高度:" + height);
+        System.out.println("第"+COUNT+"次弹起历经的总路程:" + sum);
     }
 }
