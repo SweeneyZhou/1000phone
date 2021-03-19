@@ -1,4 +1,4 @@
-package com.qianfeng.day0718.homework;
+package com.qianfeng.day0318.homework;
 
 /*
  * 5.有一个小球，从100米的高空落下，每次落地后弹起的高度是原来的一半，

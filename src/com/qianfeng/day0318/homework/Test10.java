@@ -1,4 +1,4 @@
-package com.qianfeng.day0718.homework;
+package com.qianfeng.day0318.homework;
 
 /*
  * 4.求1 1 2 3 5 8 13 21 ... 数列的第20项

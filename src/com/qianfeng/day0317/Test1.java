@@ -1,4 +1,4 @@
-package com.qianfeng.day0717;
+package com.qianfeng.day0317;
 
 import java.util.Scanner;
 

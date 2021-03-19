@@ -1,4 +1,4 @@
-package com.qianfeng.day0718.homework;
+package com.qianfeng.day0318.homework;
 
 /*
  * 2.求水仙花数

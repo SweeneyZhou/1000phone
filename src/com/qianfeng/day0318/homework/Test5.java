@@ -1,4 +1,4 @@
-package com.qianfeng.day0718.homework;
+package com.qianfeng.day0318.homework;
 /*
 * 打印1~100能被3和4整除的数字
 * */

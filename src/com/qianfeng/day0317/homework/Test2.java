@@ -1,4 +1,4 @@
-package com.qianfeng.day0717.homework;
+package com.qianfeng.day0317.homework;
 
 import java.util.Scanner;
 
