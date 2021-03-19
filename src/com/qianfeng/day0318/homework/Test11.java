@@ -10,12 +10,13 @@ package com.qianfeng.day0318.homework;
  * */
 public class Test11 {
     static final int COUNT = 10;
+    static final double HEIGHT=100;
 
     public static void main(String[] args) {
-        double height = 100;
+        double height = HEIGHT;
         double sum = 0;
         int i = 0;
-        while (i < 10) {
+        while (i < COUNT) {
             i++;//第i次弹起
             sum += height * 1.5;
             height /= 2;//第i次弹起的高度
