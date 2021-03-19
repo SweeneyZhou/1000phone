@@ -9,8 +9,8 @@ public class Test1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.next();
-        int len=s.length();
-        for (int i = 0; i < len; i++) {
+        int len = s.length();
+        for (int i = 0; i < len / 2; i++) {
             if (s.charAt(i) != s.charAt(len - i - 1)) {
                 System.out.println("不是回文");
                 return;
