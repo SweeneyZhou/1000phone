@@ -8,12 +8,12 @@ import java.util.Random;
  * 验证码由大小写字母、数字字符组成。
  * */
 public class Test1 {
-    static final int NUM = 6;//验证码的个数
+    static final int TOTAL = 6;//验证码的个数
     static final int LENGTH = 4;//验证码的长度
 
     public static void main(String[] args) {
         Random random = new Random();
-        for (int i = 0; i < NUM; i++) {
+        for (int i = 0; i < TOTAL; i++) {
             StringBuilder stringBuilder = new StringBuilder();
 
             for (int j = 0; j < LENGTH; j++) {
