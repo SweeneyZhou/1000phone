@@ -14,14 +14,15 @@ public class Test4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < COUNT; i++) {
+            System.out.println("请输入银行卡密码");
             String pwd = scanner.nextLine();
             if (PASSWORD.equals(pwd)) {
-                System.out.println("欢迎");
+                System.out.println("欢迎~");
                 return;
             } else {
-                System.out.println("密码错误!您还有" + (COUNT - i - 1) + "次机会");
+                System.out.println("密码错误!您还有" + (COUNT - i - 1) + "次机会。");
             }
         }
-        System.out.println("You have no chance！Reboot and get more chance");
+        System.out.println("You have no chance！Reboot and get more chance.");
     }
 }
