@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /*
  * 4、将一个int数组倒置
+ * 方法一：声明一个新的数组保存
  * */
 public class Test4 {
     public static void main(String[] args) {
