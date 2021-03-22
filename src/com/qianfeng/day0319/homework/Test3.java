@@ -18,7 +18,7 @@ public class Test3 {
                 //s = s.substring(0, s.indexOf(STOP));//不输出xxx
                 s = s.substring(0, s.indexOf(STOP)+3);//输出xxx
                 stringBuilder.append(s);
-                System.out.println("用户输入了:" + stringBuilder.toString());
+                System.out.println("用户输入了:" + stringBuilder);
                 return;
             }
         }
