@@ -3,7 +3,7 @@ package com.qianfeng.day0322.homework;
 import java.util.Arrays;
 
 /*
- * 5、用数组打印斐波那契数列的前15项
+ * 5、用数组打印斐波那契数列的前15项和第15项
  * */
 public class Test5 {
     static final int N = 15;
@@ -24,5 +24,6 @@ public class Test5 {
             fab[i] = fab[i - 2] + fab[i - 1];
         }
         System.out.println(Arrays.toString(fab));
+        System.out.println("第"+N+"项为:"+fab[N-1]);
     }
 }
