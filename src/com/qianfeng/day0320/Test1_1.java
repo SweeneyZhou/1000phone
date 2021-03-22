@@ -19,7 +19,7 @@ public class Test1_1 {
         for (int i=0;i<TOTAL;i++){
             StringBuilder valid=new StringBuilder();
             for(int j=0;j<LENGTH;j++){
-                valid.append(res.charAt(random.nextInt(res_len-1)));
+                valid.append(res.charAt(random.nextInt(res_len)));
             }
             System.out.println(valid);
         }
