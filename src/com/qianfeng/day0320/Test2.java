@@ -13,9 +13,8 @@ public class Test2 {
         Scanner scanner = new Scanner(System.in);
         int count_num = 0, count_letter = 0, count_else = 0;
         String s = scanner.nextLine();
-        int len = s.length();
 
-        for (int i = 0; i < len; i++) {
+        for (int i = 0, len = s.length(); i < len; i++) {
             char c = s.charAt(i);
             if (c >= '0' && c <= '9')
                 count_num++;
