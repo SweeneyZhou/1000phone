@@ -13,7 +13,8 @@ public class Test4 {
         StringBuilder str = new StringBuilder();
         String s1,s2="";
 
-        while(true) {
+
+        for (;;){
             System.out.println("请输入：");
             s1 = scanner.nextLine();
             if ("x".equals(s1)) {
