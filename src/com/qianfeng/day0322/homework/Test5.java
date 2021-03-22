@@ -10,6 +10,7 @@ public class Test5 {
 
     public static void main(String[] args) {
         int[] fab = new int[N];
+        System.out.println("求斐波那契数列的前"+N+"项:");
         if(N==0) {
             System.out.println("[]");
             return;
