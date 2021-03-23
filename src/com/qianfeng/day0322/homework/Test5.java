@@ -17,7 +17,6 @@ public class Test5 {
             System.out.println("[1]");
             return;
         }
-
         int[] fab = new int[N];
         fab[0] = 1;
         fab[1] = 1;
