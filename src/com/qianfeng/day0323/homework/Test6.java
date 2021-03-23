@@ -27,6 +27,7 @@ public class Test6 {
         Scanner scanner=new Scanner(System.in);
         printArrays(a);
         for (String s="";!"q".equals(s);){
+            System.out.println("请键入wasd控制移动方向，键入q退出程序:");
             s=scanner.next();
             switch (s){
                 case "w":
