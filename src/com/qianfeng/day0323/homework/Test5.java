@@ -1,6 +1,6 @@
 package com.qianfeng.day0323.homework;
 /*
-* 5.游戏
+* 5.游戏 数字在一维数组中移动
               {1,2,3,4,5,0,7,8,9}，输入d
               {1,2,3,4,5,7,0,8,9}，输入d
               {1,2,3,4,5,7,8,0,9}，输入a
@@ -38,7 +38,7 @@ public class Test5 {
                     }
                     break;
                 default:
-                    break;
+                    System.out.println("输入有误！请重新输入！");
             }
             System.out.println(Arrays.toString(a));
         }
