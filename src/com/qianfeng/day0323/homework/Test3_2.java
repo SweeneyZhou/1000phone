@@ -23,6 +23,7 @@ public class Test3_2 {
                 }
             }
         }
+
         //b[i]获得a中下标为b[i]的值
         for (int i = 0; i < b.length; i++) {
             b[i] = a[b[i]];
