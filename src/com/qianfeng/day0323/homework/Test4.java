@@ -11,12 +11,13 @@ public class Test4 {
         int[] a = new int[9];
         Random random = new Random();
         for (int i = 0; i < a.length; i++) {
-            int t = random.nextInt(9) + 1;
+            int t = random.nextInt(a.length) + 1;
             a[i] = t;
             for (int j = 0; j < i; j++) {
                 if (a[j] == t) {
                     a[i] = 0;
                     i--;
+                    break;
                 }
             }
         }
