@@ -14,6 +14,7 @@ public class Test3 {
         //遍历每一个位置，每次生成一个新的位置，交换这两个位置上的值
         for (int i = 0; i < a.length; i++) {
             int t=r.nextInt(a.length);
+            if(i==t)continue;//随机数与该位置下标相同，不做交换
             a[i]+=a[t];
             a[t]=a[i]-a[t];
             a[i]-=a[t];
