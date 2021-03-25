@@ -11,6 +11,7 @@ import java.util.*;
 5.随机一个确定地主，将底牌给这个地主
 * */
 public class Test1 {
+    //主程序
     public static void main(String[] args) throws Exception {
         Random r=new Random();
         Pokers pokers=new Pokers(1)//创建一副牌组
