@@ -12,7 +12,6 @@ public class Test2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s;
-
         do {
             System.out.println("请输入石头、剪刀或者布:(输入q退出)");
 
