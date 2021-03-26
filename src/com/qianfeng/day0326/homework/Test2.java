@@ -28,13 +28,13 @@ public class Test2 {
             System.out.println("你出的是:" + f1);
             System.out.println("电脑出的是:" + f2);
 
-            switch (fight(f1, f2)) {//比大小
-                case -2:
+            switch (f1.ordinal() - f2.ordinal()) {//比大小
                 case 1:
+                case -2:
                     System.out.println("你赢了！");
                     break;
-                case 2:
                 case -1:
+                case 2:
                     System.out.println("电脑胜！");
                     break;
                 default:
@@ -42,10 +42,6 @@ public class Test2 {
             }
             System.out.println("-------------------------------");
         } while (true);
-    }
-
-    public static int fight(Finger f1, Finger f2) {
-        return f1.ordinal() - f2.ordinal();
     }
 
     public static Finger getByName(String s) {
