@@ -12,7 +12,7 @@ import java.util.*;
 * */
 public class Test1 {
     //主程序
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Random r=new Random();
         Pokers pokers=new Pokers(1)//创建一副牌组
                 .shuffles();//打乱这副牌组
@@ -48,7 +48,7 @@ public class Test1 {
             this.pokers=pokers;
         }
         //创建 n 副牌
-        public Pokers(int n) throws Exception {
+        public Pokers(int n)  {
             Poker[] pokers=new Poker[54*n];
             int count = 0;
             while(n>0){
@@ -57,8 +57,12 @@ public class Test1 {
                         pokers[count]=new Poker(Color.values()[i],Figure.values()[j]);
                         count++;
                         if(count%54>=52){
-                            pokers[count++]=new Poker(Figure.BLACK);
-                            pokers[count++]=new Poker(Figure.RED);
+                            try {
+                                pokers[count++]=new Poker(Figure.BLACK);
+                                pokers[count++]=new Poker(Figure.RED);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
