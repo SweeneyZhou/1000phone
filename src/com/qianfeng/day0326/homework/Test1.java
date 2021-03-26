@@ -25,7 +25,6 @@ public class Test1 {
 
     private static boolean checkPhone(String s) {
         return check11(s)&&check1(s);
-
     }
 
     private static boolean check11(String s) {
