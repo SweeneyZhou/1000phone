@@ -31,6 +31,8 @@ public class Test1 {
         printNum(a,b);
 
         System.out.println(getValue("大",2,3,4));
+
+        System.out.println(round(3.14));
     }
     public static void printNum(int iVar,int iVar2){
         System.out.println(iVar);
