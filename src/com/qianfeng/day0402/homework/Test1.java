@@ -16,7 +16,7 @@ public class Test1 {
 
         System.out.println("--------------------------------------");
 
-        Star star=new Star();
+        Star star=new Sun();
         star.shine();
         Sun sun=(Sun)star;
         sun.doAnything();
