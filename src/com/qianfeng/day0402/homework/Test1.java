@@ -1,7 +1,7 @@
 package com.qianfeng.day0402.homework;
 
 public class Test1 {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         SUV[] cars=new SUV[]{
                 new SUV("上汽通用五菱",4100,130000),
                 new SUV("奔驰",4599,1443244),
@@ -18,7 +18,7 @@ public class Test1 {
 
         Star star=new Star();
         star.shine();
-        Sun sun=new Sun();
+        Sun sun=(Sun)star;
         sun.doAnything();
         sun.shine();
     }
