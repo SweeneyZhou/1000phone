@@ -14,5 +14,12 @@ public class Test1 {
             if (car.isMedium()) System.out.println(car+"是中型SUV。");
         }
 
+        System.out.println("--------------------------------------");
+
+        Star star=new Star();
+        star.shine();
+        Sun sun=new Sun();
+        sun.doAnything();
+        sun.shine();
     }
 }
