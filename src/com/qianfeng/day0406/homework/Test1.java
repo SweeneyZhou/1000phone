@@ -19,8 +19,6 @@ public class Test1 {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         String IP="192.168.0.1";
         String[] str=IP.split("\\.");
-        for (String s : str) {
-            System.out.println(s);
-        }
+        for (String s : str)System.out.println(s);
     }
 }
