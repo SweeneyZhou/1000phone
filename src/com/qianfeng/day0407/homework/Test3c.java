@@ -12,7 +12,9 @@ public class Test3c {
         String valid=getValid();
         System.out.println("请输入验证码:"+valid);
         String inputValid=scanner.next();
-        System.out.println(inputValid.compareToIgnoreCase(valid));
+        if(inputValid.compareToIgnoreCase(valid)==0)
+            System.out.println("验证成功！");
+        else System.out.println("验证失败！");
     }
     private static String getValid() {
         Random random = new Random();
