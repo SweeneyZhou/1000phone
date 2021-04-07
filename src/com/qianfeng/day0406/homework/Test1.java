@@ -13,8 +13,10 @@ public class Test1 {
         Calendar c= Calendar.getInstance();
         Calendar mayDay=Calendar.getInstance();
         mayDay.set(mayDay.get(Calendar.YEAR),Calendar.MAY,1);
-        if(c.after(mayDay))mayDay.set(Calendar.YEAR,mayDay.get(Calendar.YEAR)+1);
-        System.out.println("距离五一劳动节还有:"+(mayDay.getTimeInMillis()-c.getTimeInMillis())/1000/3600/24+"天");
+        if(c.after(mayDay))
+            mayDay.set(Calendar.YEAR,mayDay.get(Calendar.YEAR)+1);
+        System.out.println("距离五一劳动节还有:"+
+                (mayDay.getTimeInMillis()-c.getTimeInMillis())/1000/3600/24+"天");
 
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         String IP="192.168.0.1";
