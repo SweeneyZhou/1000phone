@@ -23,13 +23,13 @@ public class Test2 {
         printPokers(pokers);
 
 //        c.发牌   3个玩家和1个底牌
-        List<Poker>[] players=new List[]{
+        List<Poker>[] players = new List[]{
                 new ArrayList<Poker>(),
                 new ArrayList<Poker>(),
                 new ArrayList<Poker>()
         };
-        for (int i = 0,size=pokers.size(); i < size-3; i++) {
-            players[i%3].add(pokers.get(0));
+        for (int i = 0, size = pokers.size(); i < size - 3; i++) {
+            players[i % 3].add(pokers.get(0));
             pokers.remove(0);
         }
 
@@ -42,9 +42,9 @@ public class Test2 {
         printPokers(pokers);
 
 //        d.选地主 添加底牌
-        Random random=new Random();
-        int indexLandlord=random.nextInt(3);
-        System.out.println(indexLandlord+"号玩家成为地主。");
+        Random random = new Random();
+        int indexLandlord = random.nextInt(3);
+        System.out.println(indexLandlord + "号玩家成为地主。");
         players[indexLandlord].addAll(pokers);
         System.out.println("地主的牌:");
         printPokers(players[indexLandlord]);
@@ -58,12 +58,13 @@ public class Test2 {
 
 //        f.打牌
     }
-    public static <T> void printPokers(Collection<T> collection){
-        StringBuilder stringBuilder=new StringBuilder();
+
+    public static <T> void printPokers(Collection<T> collection) {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
-        for (Iterator iter=collection.iterator();iter.hasNext();){
+        for (Iterator iter = collection.iterator(); iter.hasNext(); ) {
             stringBuilder.append(iter.next());
-            if (!iter.hasNext()){
+            if (!iter.hasNext()) {
                 stringBuilder.append("]");
                 System.out.println(stringBuilder);
                 return;
