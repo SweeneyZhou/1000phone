@@ -14,8 +14,8 @@ enum Point {
     KING("K"),
     ACE("A"),
     TWO("2"),
-    BLACK("小王"),
-    RED("大王");
+    BLACK("🐕小王"),
+    RED("🐱大王");
     private final String name;
 
     Point(String s) {
