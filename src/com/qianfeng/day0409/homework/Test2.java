@@ -62,7 +62,7 @@ public class Test2 {
     public static <T> void printPokers(Collection<T> collection) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
-        for (Iterator iter = collection.iterator(); iter.hasNext(); ) {
+        for (Iterator<T> iter = collection.iterator(); iter.hasNext(); ) {
             stringBuilder.append(iter.next());
             if (!iter.hasNext()) {
                 stringBuilder.append("]");
