@@ -12,17 +12,17 @@ public class Test1 {
         File fileSource=new File(source);
         File fileTarget=new File(target);
         if(fileSource.exists())copy(fileSource,fileTarget);
-
     }
     private static void copy(File source,File target) throws IOException {
         if(!source.isDirectory()){
-            if (!target.isDirectory()){
-                copyFile2File(source,target);
-            }else{
-                if (!target.exists())
+            if (target.isDirectory()){
+                if (!target.exists()){
                     if (!target.mkdir())return;
-                copyFile2File(source,new File(target+"\\"+source.getName()));
+                }
+                target=new File(target+"\\"+source.getName());
+//                copyFile2File(source,new File(target+"\\"+source.getName()));
             }
+            copyFile2File(source,target);
         }else {
             if (!target.exists())
                 if (!target.mkdir())return;
@@ -36,11 +36,16 @@ public class Test1 {
 
     private static void copyFile2File(File source, File target) throws IOException {
         if (source.isDirectory()||target.isDirectory())return;
-        FileInputStream isr=new FileInputStream(source);
+        FileInputStream fis=new FileInputStream(source);
+        BufferedInputStream bis=new BufferedInputStream(fis);
         FileOutputStream fos=new FileOutputStream(target);
+        BufferedOutputStream bos=new BufferedOutputStream(fos);
         byte[] b=new byte[1024];
-        for (int n;(n=isr.read(b))!=-1;){
-            fos.write(b,0,n);
+        for (int n;(n=bis.read(b))!=-1;){
+            bos.write(b,0,n);
+            bos.flush();
         }
+        bos.close();
+        bis.close();
     }
 }
