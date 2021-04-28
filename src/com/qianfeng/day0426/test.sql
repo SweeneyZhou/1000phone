@@ -90,3 +90,12 @@ select *
 from department;
 select *
 from employee;
+
+CREATE TABLE UNI_test
+(
+    id   int primary key auto_increment,
+    name varchar(20) unique
+);
+alter table uni_test
+    modify name varchar(768) unique;
+desc uni_test;
