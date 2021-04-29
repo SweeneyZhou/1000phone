@@ -205,7 +205,11 @@ FROM Student
 SELECT *
 FROM Score S
 WHERE SNO IN (SELECT SNO FROM Score GROUP BY SNO HAVING COUNT(CNO) > 1)
-  and DEGREE != (SELECT max(DEGREE) FROM Score WHERE CNO = S.CNO);
+  and DEGREE != (SELECT max(DEGREE) FROM Score WHERE SNO = S.SNO);
+SELECT S.*
+FROM Score S
+JOIN (SELECT MAX(DEGREE) MAX,SNO FROM Score GROUP BY SNO )S2 ON S.SNO=S2.SNO
+WHERE S.DEGREE!=S2.MAX;
 
 # 21、查询成绩高于学号为“109”、课程号为“3-105”的成绩的所有记录。
 SELECT *
@@ -251,14 +255,14 @@ WHERE DEPART = '计算机系';
 # 28、查询“计算机系”与“电子工程系“不同职称的教师的Tname和Prof。
 SELECT A.TNAME, A.PROF
 FROM Teacher A
-WHERE PROF NOT IN (SELECT PROF FROM Teacher B WHERE A.DEPART != B.DEPART);
+WHERE DEPART IN ('计算机系','电子工程系')
+  AND PROF NOT IN (SELECT PROF FROM Teacher B WHERE A.DEPART != B.DEPART);
 # 29、查询选修编号为“3-105“课程且成绩至少高于选修编号为“3-245”的同学的Cno、Sno和Degree,并按Degree从高到低次序排序。
 SELECT CNO, SNO, DEGREE
 FROM Score
 WHERE CNO = '3-105'
   AND DEGREE > (SELECT MIN(DEGREE) FROM Score WHERE CNO = '3-245')
 ORDER BY DEGREE DESC;
-
 # 30、查询选修编号为“3-105”且成绩高于选修编号为“3-245”课程的同学的Cno、Sno和Degree.
 SELECT CNO, SNO, DEGREE
 FROM Score

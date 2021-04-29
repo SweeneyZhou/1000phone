@@ -1,0 +1,46 @@
+#
+# 题目2
+# 问题描述：
+# 已知关系模式：
+# S (SNO,SNAME）                       学生关系。SNO 为学号，SNAME 为姓名
+# C (CNO,CNAME,CTEACHER)  课程关系。CNO 为课程号，CNAME 为课程名，CTEACHER 为任课教师
+# SC(SNO,CNO,SCGRADE)        选课关系。SCGRADE 为成绩
+#
+CREATE TABLE S
+(
+    SNO   INT,
+    SNAME VARCHAR(25)
+);
+CREATE TABLE C
+(
+    CNO      INT,
+    CNAME    VARCHAR(25),
+    CTEACHER VARCHAR(25)
+);
+CREATE TABLE SC
+(
+    SNO     INT,
+    CNO     INT,
+    SCGRADE INT
+);
+# 要求实现如下5个处理：
+#   1． 找出没有选修过“李明”老师讲授课程的所有学生姓名
+SELECT DISTINCT SNAME
+FROM S
+         JOIN SC S2 on S.SNO = S2.SNO
+         JOIN C C2 on S2.CNO = C2.CNO
+WHERE CTEACHER != '李明';
+#   2． 列出有二门以上（含两门）不及格课程的学生姓名及其平均成绩
+SELECT *
+FROM S
+         JOIN SC S2 on S.SNO = S2.SNO
+         JOIN (SELECT AVG(SCGRADE), SNO FROM SC GROUP BY SNO) TAVG ON TAVG.SNO = S.SNO
+GROUP BY SNAME
+HAVING COUNT(SCGRADE < 60) >= 2;
+#   3． 列出既学过“1”号课程，又学过“2”号课程的所有学生姓名
+SELECT SNAME FROM S JOIN SC S2 on S.SNO = S2.SNO JOIN SC S3 on S.SNO = S3.SNO WHERE S2.CNO=1 AND S3.CNO=2;
+#   4． 列出“1”号课成绩比“2”号同学该门课成绩高的所有学生的学号
+SELECT SNO FROM SC WHERE CNO='1' AND SCGRADE>(SELECT SCGRADE FROM SC WHERE SNO='2'AND CNO='1');
+SELECT SNO FROM SC JOIN (SELECT SCGRADE FROM SC WHERE SNO='2'AND CNO='1')S2 WHERE SC.SCGRADE>S2.SCGRADE;
+#   5． 列出“1”号课成绩比“2”号课成绩高的所有学生的学号及其“1”号课和“2”号课的成绩
+SELECT SC.SNO, SC.SCGRADE, SC2.SCGRADE FROM SC JOIN SC SC2 ON SC.SNO=SC2.SNO AND SC2.CNO=2 WHERE SC.CNO='1' AND SC.SCGRADE>SC2.SCGRADE;
