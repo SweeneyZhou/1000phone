@@ -11,6 +11,9 @@ public class JDBCUtils {
     static String username=null;
     static String password=null;
     static Connection connection=null;
+    
+    private JDBCUtils(){ }
+
     static {
         try {
             Properties properties=new Properties();
