@@ -26,7 +26,10 @@ public class JDBCUtils {
         }
     }
     public static Connection getConnection() throws SQLException {
-        return connection!=null?connection: DriverManager.getConnection(url,username,password);
+        if (connection == null) {
+            connection = DriverManager.getConnection(url, username, password);
+        }
+        return connection;
     }
     public static void close(ResultSet resultSet, Statement statement,Connection connection) throws SQLException {
         if (resultSet!=null)resultSet.close();
