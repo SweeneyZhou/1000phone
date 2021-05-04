@@ -448,3 +448,6 @@ BEGIN
 END
 ;;
 DELIMITER ;
+
+SELECT * FROM t_jobs;
+desc t_jobs;

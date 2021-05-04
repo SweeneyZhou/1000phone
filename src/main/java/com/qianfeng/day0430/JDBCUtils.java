@@ -34,9 +34,12 @@ public class JDBCUtils {
         }
         return connection;
     }
-    public static void close(ResultSet resultSet, Statement statement,Connection connection) throws SQLException {
+    public static void close(ResultSet resultSet, Statement statement) throws SQLException {
         if (resultSet!=null)resultSet.close();
         if (statement!=null)statement.close();
-        if (connection!=null)connection.close();
+        if (connection!=null){
+            connection.close();
+            connection=null;
+        }
     }
 }
