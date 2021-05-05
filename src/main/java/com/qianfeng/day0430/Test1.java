@@ -1,7 +1,7 @@
 package com.qianfeng.day0430;
 
 import com.qianfeng.day0430.dao.JobDAO;
-import com.qianfeng.day0430.dao.dao.impl.JobDAOImpl;
+import com.qianfeng.day0430.dao.impl.JobDAOImpl;
 import com.qianfeng.day0430.entity.Job;
 import java.util.List;
 

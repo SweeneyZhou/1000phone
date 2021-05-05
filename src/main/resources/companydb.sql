@@ -441,13 +441,23 @@ BEGIN
 	DECLARE num int;
 	select count(*)  from t_employees where SALARY BETWEEN a1 and a2 into num;
 
-	if num > 0 THEN
-		select '存在该范围的用户' as '结果';
-	end if;
+    if num > 0 THEN
+        select '存在该范围的用户' as '结果';
+    end if;
 
 END
 ;;
 DELIMITER ;
 
-SELECT * FROM t_jobs;
+SELECT *
+FROM t_jobs;
 desc t_jobs;
+Select *
+from t_employees;
+Select *
+from t_departments
+         join t_locations l on t_departments.LOCATION_ID = l.location_id;
+
+desc t_employees;
+desc t_departments;
+desc t_locations;

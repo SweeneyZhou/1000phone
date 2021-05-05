@@ -1,4 +1,4 @@
-package com.qianfeng.day0430.dao.dao.impl;
+package com.qianfeng.day0430.dao.impl;
 
 import com.qianfeng.day0430.JDBCUtils;
 import com.qianfeng.day0430.dao.JobDAO;
