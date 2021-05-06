@@ -461,3 +461,10 @@ from t_departments
 desc t_employees;
 desc t_departments;
 desc t_locations;
+
+create table Account
+(
+    ACCOUNT_ID INT primary key auto_increment,
+    NAME       VARCHAR(20),
+    MONEY      decimal
+);
