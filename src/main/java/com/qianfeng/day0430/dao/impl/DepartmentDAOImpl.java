@@ -1,6 +1,6 @@
 package com.qianfeng.day0430.dao.impl;
 
-import com.qianfeng.day0430.JDBCUtils;
+import com.qianfeng.JDBCUtils;
 import com.qianfeng.day0430.dao.DepartmentDAO;
 import com.qianfeng.day0430.entity.Department;
 
