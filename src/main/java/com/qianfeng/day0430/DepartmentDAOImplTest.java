@@ -40,7 +40,9 @@ public class DepartmentDAOImplTest {
         }
         //根据部门名称显示部门信息
         System.out.println("根据部门名称显示部门信息");
-        System.out.println(departmentDAO.findByDepartmentName("外交部"));
+        for (Department department : departmentDAO.findByDepartmentName("外交部")) {
+            System.out.println(department);
+        }
 
         //添加新部门
         Department dep = new Department(281, "焚化部", null, null);

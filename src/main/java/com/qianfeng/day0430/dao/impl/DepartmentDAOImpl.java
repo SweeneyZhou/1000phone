@@ -218,29 +218,31 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public Department findByDepartmentName(String name) {
-        Department department = null;
+    public List<Department> findByDepartmentName(String name) {
+        List<Department> list;
         try {
             Connection connection = JDBCUtils.getConnection();
 
-            String sql = "select * from t_departments where DEPARTMENT_NAME=?";
+            String sql = "select * from t_departments where DEPARTMENT_NAME like ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                department = new Department(
+            list = new ArrayList<>();
+            while (resultSet.next()) {
+                Department department = new Department(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4)
                 );
+                list.add(department);
             }
 
             JDBCUtils.close(resultSet, preparedStatement);
 
-            return department;
+            return list;
 
         } catch (SQLException e) {
             e.printStackTrace();

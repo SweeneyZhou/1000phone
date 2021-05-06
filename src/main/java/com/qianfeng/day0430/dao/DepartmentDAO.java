@@ -89,6 +89,6 @@ public interface DepartmentDAO {
      * @param name 部门名
      * @author sweeney
      */
-    Department findByDepartmentName(String name);
+    List<Department> findByDepartmentName(String name);
 
 }
