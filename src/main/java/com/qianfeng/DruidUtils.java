@@ -15,6 +15,7 @@ public class DruidUtils {
         Properties properties = new Properties();
         InputStream inputStream = DruidUtils.class.getResourceAsStream("/druid-config.properties");
         try {
+            properties.load(inputStream);
             dataSource = DruidDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
             e.printStackTrace();
@@ -22,6 +23,10 @@ public class DruidUtils {
     }
 
     private DruidUtils() {
+    }
+
+    public static DataSource getDataSource() {
+        return dataSource;
     }
 
     public static Connection getConnection() {

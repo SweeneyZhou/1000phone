@@ -1,7 +1,6 @@
 package com.qianfeng.day0506.dao;
 
-import com.qianfeng.day0430.entity.Employee;
-import com.qianfeng.day0430.entity.Job;
+import com.qianfeng.day0506.entity.Employee;
 
 import java.util.List;
 
@@ -129,84 +128,4 @@ public interface EmployeeDAO {
      */
     Employee findByEmployeeId(Integer id);
 
-    interface JobDAO {
-
-        /**
-         * 倒序标识
-         */
-        String DESC = " DESC ";
-        /**
-         * 正序标识
-         */
-        String ASC = " ASC ";
-
-        /**
-         * 保存实体
-         *
-         * @param job job实例
-         * @author sweeney
-         */
-        boolean save(Job job);
-
-        /**
-         * 通过JobId和更新后的Job实体，修改数据
-         *
-         * @param id  JobId
-         * @param job Job实体
-         * @author sweeney
-         */
-        boolean update(String id, Job job);
-
-        /**
-         * 通过JobId删除
-         *
-         * @param id JobId
-         * @author sweeney
-         */
-        boolean delete(String id);
-
-        /**
-         * 通过jobId查找
-         *
-         * @param id JobId
-         * @author sweeney
-         */
-        Job findById(String id);
-
-        /**
-         * 通过title查找
-         *
-         * @param title Job title
-         * @author sweeney
-         */
-        List<Job> findByJobTitle(String title);
-
-        /**
-         * 通过minSalary查找
-         *
-         * @param salary 最低工资
-         * @author sweeney
-         */
-        List<Job> findByMinSalary(Integer salary);
-
-        /**
-         * 通过maxSalary查找
-         *
-         * @param salary 最高公子
-         * @author sweeney
-         */
-        List<Job> findByMaxSalary(Integer salary);
-
-        /**
-         * 查找全部并排序返回
-         *
-         * @param order 排序
-         * @author sweeney
-         */
-        List<Job> findAll(String order);
-
-        default List<Job> findAll() {
-            return findAll(ASC);
-        }
-    }
 }

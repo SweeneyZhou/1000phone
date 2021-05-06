@@ -6,7 +6,6 @@ import com.qianfeng.day0506.dao.impl.AccountDAOImpl;
 import com.qianfeng.day0506.service.AccountService;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class AccountServiceImpl implements AccountService {
     AccountDAO accountDAO = new AccountDAOImpl();

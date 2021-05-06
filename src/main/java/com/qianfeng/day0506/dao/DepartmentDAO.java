@@ -1,6 +1,6 @@
 package com.qianfeng.day0506.dao;
 
-import com.qianfeng.day0430.entity.Department;
+import com.qianfeng.day0506.entity.Department;
 
 import java.util.List;
 
@@ -22,16 +22,16 @@ public interface DepartmentDAO {
      *
      * @author sweeney
      */
-    List<Department> findALl();
+    List<Department> findAll();
 
     /**
      * 显示某一页的部门信息（每一页的大小为pageCount）
      *
-     * @param pageNumber 页号 第一页为0
-     * @param pageCount  每页个数
+     * @param currentPage 页码
+     * @param pageSize    每页长度
      * @author sweeney
      */
-    List<Department> findAll(int pageNumber, int pageCount);
+    List<Department> findAll(int currentPage, int pageSize);
 
     /**
      * 显示第一页的部门信息（每一页的大小为10）
