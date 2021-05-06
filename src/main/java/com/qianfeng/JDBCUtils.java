@@ -1,4 +1,4 @@
-package com.qianfeng.day0430;
+package com.qianfeng;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,8 +16,8 @@ public class JDBCUtils {
 
     static {
         try {
-            Properties properties=new Properties();
-            InputStream stream = JDBCUtils.class.getResourceAsStream("/config.properties");
+            Properties properties = new Properties();
+            InputStream stream = JDBCUtils.class.getResourceAsStream("/jdbc-config.properties");
             properties.load(stream);
             driver= (String) properties.get("driver");
             url=(String)properties.get("url");
