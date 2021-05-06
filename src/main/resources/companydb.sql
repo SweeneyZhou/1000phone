@@ -468,3 +468,6 @@ create table Account
     NAME       VARCHAR(20),
     MONEY      decimal
 );
+desc account;
+select *
+from account;
