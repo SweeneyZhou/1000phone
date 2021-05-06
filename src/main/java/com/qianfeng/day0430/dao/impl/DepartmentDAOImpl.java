@@ -226,7 +226,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
             String sql = "select * from t_departments where DEPARTMENT_NAME like ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             list = new ArrayList<>();
