@@ -26,7 +26,7 @@ public interface EmployeeDAO {
     /**
      * 正序标识
      */
-    String ASC = " ASC ";
+    String ASC = " ";
 
     /**
      * 查询所有员工信息
@@ -100,7 +100,8 @@ public interface EmployeeDAO {
      * @author sweeney
      */
     default Employee findMinSalary() {
-        return findAllOrderBySalary(ASC).get(0);
+        List<Employee> allOrderBySalary = findAllOrderBySalary(ASC);
+        return allOrderBySalary.get(allOrderBySalary.size() - 1);
     }
 
     /**

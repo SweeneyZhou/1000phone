@@ -16,12 +16,12 @@ public class EmployeeDaoImplTest {
         }
         //测试根据用户名查询员工信息
         System.out.println("测试根据用户名查询员工信息");
-        for (Employee employee : employeeDAO.findByFirstName("杨景言")) {
+        for (Employee employee : employeeDAO.findByFirstName("毛毛")) {
             System.out.println(employee);
         }
         //测试根据薪水范围查询用户信息
         System.out.println("测试根据薪水范围查询用户信息");
-        for (Employee employee : employeeDAO.findBySalaryBetween(20000, 26000)) {
+        for (Employee employee : employeeDAO.findBySalaryBetween(20000, 46000)) {
             System.out.println(employee);
         }
         //测试显示最大薪水的员工信息
@@ -64,6 +64,15 @@ public class EmployeeDaoImplTest {
         }
         //测试结果
         for (Employee employee : employeeDAO.findAll()) {
+            System.out.println(employee);
+        }
+
+        System.out.println("降序");
+        for (Employee employee : employeeDAO.findAllOrderBySalary(EmployeeDAO.DESC)) {
+            System.out.println(employee);
+        }
+        System.out.println("升序");
+        for (Employee employee : employeeDAO.findAllOrderBySalary(EmployeeDAO.ASC)) {
             System.out.println(employee);
         }
     }

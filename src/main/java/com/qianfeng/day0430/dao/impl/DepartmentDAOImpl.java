@@ -40,7 +40,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 list.add(department);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
 
@@ -74,7 +74,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 list.add(department);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
 
@@ -99,7 +99,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
             preparedStatement.setString(4, department.getLocationId());
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -123,7 +123,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
             preparedStatement.setInt(4, department.getDepartmentId());
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -144,7 +144,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
             preparedStatement.setInt(1, id);
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -174,7 +174,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 );
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return department;
 
@@ -207,7 +207,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 list.add(department);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
 
@@ -240,7 +240,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 list.add(department);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
 

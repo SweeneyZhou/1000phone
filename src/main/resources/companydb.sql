@@ -454,6 +454,11 @@ FROM t_jobs;
 desc t_jobs;
 Select *
 from t_employees;
+
+select *
+from t_employees
+order by SALARY DESC;
+
 Select *
 from t_departments
          join t_locations l on t_departments.LOCATION_ID = l.location_id;

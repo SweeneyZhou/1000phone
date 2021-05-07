@@ -45,7 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 list.add(employee);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
         } catch (SQLException e) {
@@ -78,7 +78,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setString(12, employee.getPic());
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -123,7 +123,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setInt(12, id);
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -154,7 +154,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             preparedStatement.setInt(1, id);
             flag = preparedStatement.executeUpdate() > 0;
 
-            JDBCUtils.close(null, preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
             return flag;
         } catch (SQLException e) {
@@ -194,7 +194,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 list.add(employee);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
         } catch (SQLException e) {
@@ -235,7 +235,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 list.add(employee);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
         } catch (SQLException e) {
@@ -275,7 +275,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 list.add(employee);
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
         } catch (SQLException e) {
@@ -301,7 +301,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 list.add(resultSet.getInt(1));
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return list;
         } catch (SQLException e) {
@@ -323,7 +323,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) n = resultSet.getInt(1);
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
             return n;
 
         } catch (SQLException e) {
@@ -362,7 +362,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 );
             }
 
-            JDBCUtils.close(resultSet, preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return emp;
         } catch (SQLException e) {

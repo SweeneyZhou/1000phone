@@ -33,7 +33,7 @@ public class JobDAOImpl implements JobDAO {
             preparedStatement.setInt(4,job.getMaxSalary());
             flag=preparedStatement.executeUpdate()>0;
 
-            JDBCUtils.close(null,preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class JobDAOImpl implements JobDAO {
             preparedStatement.setString(4,job.getJobId());
             flag=preparedStatement.executeUpdate()>0;
 
-            JDBCUtils.close(null,preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class JobDAOImpl implements JobDAO {
             preparedStatement.setString(1,id);
             flag=preparedStatement.executeUpdate()>0;
 
-            JDBCUtils.close(null,preparedStatement);
+            JDBCUtils.close(null, preparedStatement, connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,7 +104,7 @@ public class JobDAOImpl implements JobDAO {
                 );
             }
 
-            JDBCUtils.close(resultSet,preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return job;
         } catch (SQLException e) {
@@ -139,7 +139,7 @@ public class JobDAOImpl implements JobDAO {
                 jobs.add(job);
             }
             //5.关闭流
-            JDBCUtils.close(resultSet,preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return jobs;
         } catch (SQLException e) {
@@ -174,7 +174,7 @@ public class JobDAOImpl implements JobDAO {
                 jobs.add(job);
             }
             //5.关闭流
-            JDBCUtils.close(resultSet,preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return jobs;
         } catch (SQLException e) {
@@ -209,7 +209,7 @@ public class JobDAOImpl implements JobDAO {
                 jobs.add(job);
             }
             //5.关闭流
-            JDBCUtils.close(resultSet,preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return jobs;
         } catch (SQLException e) {
@@ -244,7 +244,7 @@ public class JobDAOImpl implements JobDAO {
                 jobs.add(job);
             }
             //5.关闭流
-            JDBCUtils.close(resultSet,preparedStatement);
+            JDBCUtils.close(resultSet, preparedStatement, connection);
 
             return jobs;
         } catch (SQLException e) {

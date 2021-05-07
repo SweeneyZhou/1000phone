@@ -126,7 +126,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public List<Employee> findByFirstName(String name) {
         String sql = "select * from t_employees where FIRST_NAME like ?";
         try {
-            return queryRunner.query(sql, new BeanListHandler<>(Employee.class, basicRowProcessor), name);
+            return queryRunner.query(sql, new BeanListHandler<>(Employee.class, basicRowProcessor), "%" + name + "%");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,9 +146,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAllOrderBySalary(String order) {
-        String sql = "select * from t_employees order by ?";
+        String sql = "select * from t_employees  order by SALARY ";
+
         try {
-            return queryRunner.query(sql, new BeanListHandler<>(Employee.class, basicRowProcessor), " salary " + order);
+            List<Employee> list = queryRunner.query(sql, new BeanListHandler<>(Employee.class, basicRowProcessor));
+            //System.out.println("find all :" +list.get(0));
+            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         }
