@@ -462,7 +462,7 @@ order by SALARY DESC;
 Select *
 from t_departments
          join t_locations l on t_departments.LOCATION_ID = l.location_id;
-
+show tables;
 desc t_employees;
 desc t_departments;
 desc t_locations;
@@ -473,3 +473,7 @@ from account;
 delete
 from t_departments
 where DEPARTMENT_ID = 283;
+select *
+from t_employees t1
+         left join t_departments td on t1.DEPARTMENT_ID = td.DEPARTMENT_ID
+         left join t_jobs tj on t1.JOB_ID = tj.JOB_ID;
