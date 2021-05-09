@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/tailwindcss/2.1.1/tailwind.min.css">
+
+    <title>登录</title>
+</head>
+<body>
+<div class="container mx-auto w-48 my-auto h-screen pt-auto">
+    <form action="/login" method="post" class="">
+        <div>
+            <label><input type="text" placeholder="用户名" name="username" class="border m-2 w-full py-1 px-3"></label>
+        </div>
+        <div>
+            <label><input type="text" placeholder="密码" name="username" class="border m-2 w-full  py-1 px-3"></label>
+        </div>
+        <div class="mt-2 text-center">
+            <button type="submit" class="bg-blue-100 hover:bg-blue-300 text-violet-700 text-base py-1 px-3 rounded">登录</button>
+            <button type="reset" class="bg-blue-100 hover:bg-blue-300 text-violet-700 text-base py-1 px-3 rounded">重置</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

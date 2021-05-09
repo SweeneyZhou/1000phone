@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/tailwindcss/2.1.1/tailwind.min.css">
+	<title>添加雇员</title>
+</head>
+<body>
+<div class="m-4 p-4" >
+<div class="mt-10 ">
+	<div class="mt-5 ">
+		<form action="./emp/add" method="POST">
+			<div class="shadow overflow-hidden ">
+				<div class="px-4 py-5 bg-white">
+					<div class="grid grid-cols-6 gap-6">
+						<div class="col-span-2">
+							<label for="employee_id" class="block text-sm font-medium text-gray-700">序号</label>
+							<input disabled type="text" name="employee_id" id="employee_id"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+						<div class="col-span-2">
+							<label for="hire_date" class="block text-sm font-medium text-gray-700">入职日期</label>
+							<input type="date" name="hire_date" id="hire_date"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+						<div class="col-span-2">
+							<label for="manager_id" class="block text-sm font-medium text-gray-700">Manager_Id</label>
+							<input type="text" name="manager_id" id="manager_id"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+						<div class="col-span-6 sm:col-span-3">
+							<label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
+							<input type="text" name="first_name" id="first_name" autocomplete="given-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+
+						<div class="col-span-6 sm:col-span-3">
+							<label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+							<input type="text" name="last_name" id="last_name" autocomplete="family-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+
+						<div class="col-span-6 sm:col-span-3">
+							<label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+							<input type="text" name="first_name" id="email" autocomplete="given-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+
+						<div class="col-span-6 sm:col-span-3">
+							<label for="phone_number" class="block text-sm font-medium text-gray-700">Phone
+								number</label>
+							<input type="text" name="last_name" id="phone_number" autocomplete="family-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+						<div class="col-span-6 sm:col-span-3">
+							<label for="salary" class="block text-sm font-medium text-gray-700">薪资</label>
+							<input type="text" name="last_name" id="salary" autocomplete="family-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+						<div class="col-span-6 sm:col-span-3">
+							<label for="comm" class="block text-sm font-medium text-gray-700">提成</label>
+							<input type="text" name="last_name" id="comm" autocomplete="family-name"
+								   class="px-3 py-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border shadow rounded">
+						</div>
+
+						<div class="col-span-6 sm:col-span-3">
+							<label for="job" class="block text-sm font-medium text-gray-700">职位</label>
+							<select id="job" name="country" autocomplete="country"
+									class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+								<option>United States</option>
+								<option>Canada</option>
+								<option>Mexico</option>
+							</select>
+						</div>
+						<div class="col-span-6 sm:col-span-3">
+							<label for="department" class="block text-sm font-medium text-gray-700">部门</label>
+							<select id="department" name="country" autocomplete="country"
+									class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+								<option>United States</option>
+								<option>Canada</option>
+								<option>Mexico</option>
+							</select>
+						</div>
+					</div>
+					<div class="mt-4 text-right">
+						<button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+							Save
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+</body>
+</html>
