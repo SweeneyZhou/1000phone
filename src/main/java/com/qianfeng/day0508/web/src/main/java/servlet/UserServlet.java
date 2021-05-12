@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -22,7 +23,6 @@ public class UserServlet extends HttpServlet {
         //设置字符编码
         resp.setContentType("text/html;charset=utf-8");
         String msg=req.getParameter("msg");
-        System.out.println(msg);
         //HTML
         StringBuilder html=new StringBuilder();
         html.append("<!DOCTYPE html>\n" +
@@ -41,7 +41,11 @@ public class UserServlet extends HttpServlet {
                 "            <label><input type=\"text\" placeholder=\"用户名\" name=\"username\" class=\"border m-2 w-full py-1 px-3\"></label>\n" +
                 "        </div>\n" +
                 "        <div>\n" +
-                "            <label><input type=\"text\" placeholder=\"密码\" name=\"password\" class=\"border m-2 w-full  py-1 px-3\"></label>\n" +
+                "            <label><input type=\"password\" placeholder=\"密码\" name=\"password\" class=\"border m-2 w-full  py-1 px-3\"></label>\n" +
+                "        </div>\n" +
+                "        <div><img src=\"./user/validate\"></div>"+
+                "        <div>\n" +
+                "            <label><input type=\"text\" placeholder=\"验证码\" name=\"valid\" class=\"border m-2 w-full  py-1 px-3\"></label>\n" +
                 "        </div>\n" +
                 "        <div class=\"mt-2 text-center\">\n" +
                 "            <button type=\"submit\" class=\"bg-blue-100 hover:bg-blue-300 text-violet-700 text-base py-1 px-3 rounded\">登录</button>\n" +
@@ -80,7 +84,20 @@ public class UserServlet extends HttpServlet {
             doGet(req,resp);
         }
         req.setCharacterEncoding("utf-8");
+        String msg;
+        HttpSession session = req.getSession();
+        String  code = (String)session.getAttribute("code");
         //获取表单数据
+        String valid = req.getParameter("valid");
+        if(valid==null||code==null||valid.trim().equals("")){
+            msg="缺少验证码或者验证码错误！";
+            resp.sendRedirect(req.getContextPath()+"/login?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
+            return;
+        }else if(!valid.equals(code)) {
+            msg="验证码错误！";
+            resp.sendRedirect(req.getContextPath()+"/login?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
+            return;
+        }
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User loginUser = new User();
@@ -91,10 +108,10 @@ public class UserServlet extends HttpServlet {
         User user=userService.check(loginUser);
 
         //返回登录结果、重定向至雇员界面 或者登录界面
-        String msg;
         if (user!=null){
             if (password.equals(user.getPassword())){
-                resp.sendRedirect("./emp");
+                session.setAttribute("user",user);
+                resp.sendRedirect(req.getContextPath()+"/emp");
                 return;
             }else {
                 msg= "密码错误！";
@@ -102,6 +119,6 @@ public class UserServlet extends HttpServlet {
         }else {
             msg="用户名不存在！";
         }
-        resp.sendRedirect("./login?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
+        resp.sendRedirect(req.getContextPath()+"/login?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
     }
 }

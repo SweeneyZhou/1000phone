@@ -33,15 +33,19 @@ public class EmployeeServlet extends HttpServlet {
         String method=uri.substring(uri.lastIndexOf('/'));
         switch (method){
             case "/emp":
+                //返回雇员列表
                 list(req,resp);
                 break;
             case "/add":
+                //添加雇员页面
                 addView(resp);
                 break;
             case "/update":
+                //修改雇员页面
                 updateView(req,resp);
                 break;
             case "/delete":
+                //删除雇员操作
                 deleteEmployee(req,resp);
         }
 
@@ -53,12 +57,12 @@ public class EmployeeServlet extends HttpServlet {
             //删除
             EmployeeService service=new EmployeeServiceImpl();
             String msg=service.deleteEmployee(Integer.parseInt(id))?"删除成功!":"删除失败!";
-            resp.sendRedirect("../emp?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
+            resp.sendRedirect(req.getContextPath()+"/emp?msg="+URLEncoder.encode(msg, StandardCharsets.UTF_8));
             return;
         }
-        resp.sendRedirect("../emp");
+        resp.sendRedirect(req.getContextPath()+"/emp");
     }
-
+    //修改雇员页面
     private void updateView(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id=req.getParameter("id");
         if (!"".equals(id)){
@@ -182,9 +186,9 @@ public class EmployeeServlet extends HttpServlet {
                 return;
             }
         }
-        resp.sendRedirect("../emp");
+        resp.sendRedirect(req.getContextPath()+"/emp");
     }
-
+    //添加雇员页面
     private void addView(HttpServletResponse resp) throws IOException {
         EmployeeService service=new EmployeeServiceImpl();
 
@@ -303,7 +307,7 @@ public class EmployeeServlet extends HttpServlet {
                 "</html>";
         resp.getWriter().print(html);
     }
-
+    //雇员列表页面
     private void list(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         EmployeeService service=new EmployeeServiceImpl();
         List<Map<String,Object>> list = service.list();
@@ -380,6 +384,7 @@ public class EmployeeServlet extends HttpServlet {
                 "\t\t\t\t\t\t\t</th>\n" +
                 "\t\t\t\t\t\t\t<th scope=\"col\" class=\"relative px-6 py-3\">\n" +
                 "\t\t\t\t\t\t\t\t\t<a href=\"./emp/add\" class=\"text-indigo-600 hover:text-indigo-900\">添加雇员</a>\n" +
+                "\t\t\t\t\t\t\t\t\t<a href=\"./user/logout\" class=\"ml-2 text-indigo-600 hover:text-indigo-900\">安全退出</a>\n" +
                 "\t\t\t\t\t\t\t</th>\n" +
                 "\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t</thead>\n" +
@@ -479,6 +484,7 @@ public class EmployeeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
+        //获取表单数据
         String employee_id = req.getParameter("employee_id");
         System.out.println(employee_id);
         String first_name = req.getParameter("first_name");
@@ -505,7 +511,7 @@ public class EmployeeServlet extends HttpServlet {
                 Employee employee=new Employee(null,first_name,last_name,email,phone_number,hireDate,job_id,Integer.parseInt(salary),Double.parseDouble(comm),Integer.parseInt(manager_id),Integer.parseInt(department_id),null);
                 msg=service.addEmployee(employee)?"添加成功!":"添加失败!";
             }
-            resp.sendRedirect("./emp?msg="+ URLEncoder.encode(msg, StandardCharsets.UTF_8));
+            resp.sendRedirect(req.getContextPath()+"/emp?msg="+ URLEncoder.encode(msg, StandardCharsets.UTF_8));
         } catch (ParseException e) {
             e.printStackTrace();
         }

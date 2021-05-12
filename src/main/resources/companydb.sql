@@ -466,7 +466,7 @@ show tables;
 desc t_employees;
 desc t_departments;
 desc t_locations;
-
+desc users;
 desc account;
 select *
 from account;
