@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>购物车</title>
+	<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+	<script>
+        $(() => {
+            let methods = {
+                //计算页面的金额
+                sum: () => {
+                    let trs = $("tbody tr")
+                    //如果没有行，则总价为零，且不再计算单个商品的金额
+                    if (!trs.length > 0) {
+                        $("tfoot td:last").html(0);
+                        return
+                    }
+                    trs.each(
+                        function () {
+                            let count = $(this).children(":eq(3)").children(":eq(1)").children().val()
+                            let price = $(this).children(":eq(4)").html()
+                            let sum = parseInt(price * count * 100 + "") / 100
+                            $(this).children(":eq(5)").html(sum)
+                            let s = 0;
+                            for (let ele of $("tbody tr")) {
+                                let html = $(ele).children(":eq(5)").html()
+                                s = parseInt(html * 100 + s * 100 + "") / 100
+                            }
+                            $("tfoot td:last").html(s);
+                        }
+                    )
+                },
+                delete: (e) => {
+                    $(e.target).parents("tr").remove()
+                    console.log(this)
+                    methods.sum()
+                },
+                countIncrease: (e) => {
+                    let obj = $(e.target).next().children()
+                    let val = obj.val()
+                    obj.val(++val)
+                    methods.sum()
+                },
+                countDecrease: (e) => {
+                    let obj = $(e.target).prev().children()
+                    let val = obj.val()
+                    if (val > 0)
+                        obj.val(--val)
+                    methods.sum()
+                },
+                selectAll: () => {
+                    for (let box of $("input[type=checkbox]:not(:first)")) {
+                        box.checked = allCheck.checked;
+                    }
+                },
+                //检查是否被全选，如果有一个checkbox为false，全选框为false，反之为true
+                checkAll: () => {
+                    let flag = true
+                    let boxes = $("input[type=checkbox]:not(:first)")
+                    for (let box of boxes) {
+                        if (!box.checked) {
+                            flag = false
+                        }
+                    }
+                    $("input[type=checkbox]")[0].checked = flag
+                }
+
+            }
+
+            methods.sum()
+
+            //为a标签添加点击事件 删除，然后重新求和
+            $("tbody a").click(methods.delete)
+            //为+按钮添加点击事件 ++商品数量
+            $("button:even").click(methods.countIncrease)
+            //为-按钮添加点击事件 --商品数量
+            $("button:odd").click(methods.countDecrease)
+            //商品数量输入框添加改变事件 求和
+            $("input[type=text]").each(function () {
+                $(this).change(methods.sum)
+            })
+            //全选
+            var allCheck = $("input[type=checkbox]")[0]
+            allCheck.onchange = methods.selectAll
+
+            //为复选框添加事件 改变时，检查是否全选
+            $("input[type=checkbox]:not(:first)").each(function () {
+                $(this).change(methods.checkAll)
+            })
+            //批量删除选中
+            $("a:contains(删除选中)").click(() => {
+                let boxes = $("input[type=checkbox]")
+                boxes.each(function () {
+                    if (this.checked) {
+                        $(this).parents("tr").children(":last").children("a").click()
+                    }
+                })
+                allCheck.checked = false
+            })
+            //清空购物车
+            $("a:contains(清空购物车)").click(() => {
+                let boxes = $("input[type=checkbox]")
+                boxes.each(function () {
+                    $(this).parents("tr").children(":last").children("a").click()
+                })
+                allCheck.checked = false
+            })
+            //添加商品
+            $("button:contains(添加)").click(() => {
+                let name = $("label:contains(商品名称) input").val()
+                let count = $("label:contains(商品数量) input").val()
+                let price = $("label:contains(商品单价) input").val()
+                let tr = $("<tr></tr>")
+                //创建7个td标签
+                let tds = new Array(7);
+                for (let i = 0; i < tds.length; i++) {
+                    tds[i] = $("<td></td>")
+                }
+                //根据表单信息填充每个td标签的内容
+                let checkbox = $("<input type=\"checkbox\">")
+                checkbox.change(methods.checkAll)
+                $(tds[0]).append($("<label></label>").append(checkbox))
+
+                let lastId = $("tbody tr:last td:eq(1)").html()
+                $(tds[1]).html(parseInt(lastId) + 1);
+
+                $(tds[2]).html(name)
+
+                let btnIncrease = $("<button>+</button>")
+                let inputCount = $("<input type=\"text\" value=\"3\" maxlength=\"3\">")
+                let btnDecrease = $("<button>-</button>")
+                btnIncrease.click(methods.countIncrease)
+                btnDecrease.click(methods.countDecrease)
+                inputCount.change(methods.sum)
+                inputCount.val(count)
+                $(tds[3]).append(btnIncrease).append($("<label></label>").append(inputCount)).append(btnDecrease)
+
+                $(tds[4]).html(price)
+
+                let aDelete = $("<a href=\"javascript:void(0)\">删除</a>")
+                $(aDelete).click(methods.delete)
+                $(tds[6]).append(aDelete)
+
+                //将td添加到tr中
+                for (let td of tds) {
+                    console.log(td)
+                    tr.append($(td))
+                }
+                //将tr添加到tbody中
+                $("tbody").append(tr)
+
+
+                methods.sum()//计算页面金额
+            })
+        })
+
+	</script>
+
+	<style>
+        th {
+            text-align: center;
+        }
+
+        tr td {
+            padding: .2rem .5rem;
+            min-width: 5rem;
+        }
+
+        tr :first-child {
+            text-align: center;
+        }
+
+        label {
+            margin: 0;
+        }
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9">
+			<table class="table table-bordered table-hover mt-3 ">
+				<thead class="bg-info">
+				<tr>
+					<th>
+						<label>
+							<input type="checkbox">
+						</label>
+					</th>
+					<th>商品id</th>
+					<th>商品名称</th>
+					<th>商品数量</th>
+					<th>商品单价</th>
+					<th>金额</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>
+						<label>
+							<input type="checkbox">
+						</label>
+					</td>
+					<td>1</td>
+					<td>南瓜</td>
+					<td>
+						<button>+</button>
+						<label>
+							<input type="text" value="5" maxlength="3">
+						</label>
+						<button>-</button>
+					</td>
+					<td>2</td>
+					<td>4</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							<input type="checkbox">
+						</label>
+					</td>
+					<td>2</td>
+					<td>北瓜</td>
+					<td>
+						<button>+</button>
+						<label>
+							<input type="text" value="3" maxlength="3">
+						</label>
+						<button>-</button>
+					</td>
+					<td>5.6</td>
+					<td>4</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							<input type="checkbox">
+						</label>
+					</td>
+					<td>3</td>
+					<td>西瓜</td>
+					<td>
+						<button>+</button>
+						<label>
+							<input type="text" value="6" maxlength="3">
+						</label>
+						<button>-</button>
+					</td>
+					<td>3.9</td>
+					<td>4</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							<input type="checkbox">
+						</label>
+					</td>
+					<td>4</td>
+					<td>冬瓜</td>
+					<td>
+						<button>+</button>
+						<label>
+							<input type="text" value="9" maxlength="3">
+						</label>
+						<button>-</button>
+					</td>
+					<td>7.8</td>
+					<td>4</td>
+					<td><a href="javascript:void(0)">删除</a></td>
+				</tr>
+				</tbody>
+				<tfoot class="bg-light">
+				<tr>
+					<td>总价</td>
+					<td colspan="6">0</td>
+				</tr>
+				</tfoot>
+			</table>
+			<a href="javascript:void(0)">清空购物车</a>
+			<a href="javascript:void(0)">删除选中</a>
+		</div>
+		<div class="col-lg-3 mt-3">
+			<form action="">
+				<ul class="list-group mb-3">
+					<li class="list-group-item px-3 p-1 bg-info">
+						<span class="font-weight-bolder">添加商品</span>
+					</li>
+					<li class="list-group-item">
+						<div>
+							<label>
+								商品名称
+								<input type="text" class="form-control mt-2">
+							</label>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div>
+							<label>
+								商品数量
+								<input type="text" class="form-control mt-2" maxlength="3">
+							</label>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div>
+							<label>
+								商品单价
+								<input type="text" class="form-control mt-2" maxlength="3">
+							</label>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<button type="button" class="form-control btn btn-outline-primary">添加</button>
+					</li>
+				</ul>
+				<div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

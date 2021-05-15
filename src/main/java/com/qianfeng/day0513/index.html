@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>index</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+<script>
+    $(() => {
+        let content=$("#content")
+		$("#inBtn").click(()=>{
+		    let css = parseInt(content.css("fontSize")) ;
+            content.css("fontSize",(css+2)+"px");
+		})
+        $("#deBtn").click(()=>{
+            let css = parseInt(content.css("fontSize")) ;
+			content.css("fontSize",(css-2)+"px");
+        })
+	})
+</script>
+<button id="inBtn">放大</button>
+<button id="deBtn">缩小</button>
+<div id="content">
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid debitis fugiat harum, ipsa ipsam iste labore maiores mollitia natus nesciunt, non optio ratione rem, sequi similique voluptas voluptates? Et fuga impedit ipsum maiores molestias neque quasi tempora, ut vel veritatis? Inventore nulla placeat quis ratione repudiandae tempora, voluptatum? Enim mollitia quaerat reiciendis. Ad alias autem, corporis delectus dolores earum eos expedita illo illum laboriosam magni maiores, molestias natus nihil nisi officiis placeat porro ratione reiciendis sapiente unde vero voluptates. A alias amet at autem consectetur delectus dicta dolorem, dolorum esse et eum eveniet explicabo impedit incidunt libero molestias nostrum numquam quasi quia quidem recusandae sint sit tempore vel vitae voluptates, voluptatibus. Ad consequuntur, deleniti dolore eos ex fuga id minus officia, quasi rem repellendus voluptate. Consectetur dicta dignissimos et officiis sit tempora! Commodi earum error eum fugit ipsam libero nam nulla, obcaecati placeat quae saepe veniam voluptates. Accusamus aperiam aspernatur, assumenda atque autem dolore dolores eos est eveniet expedita facere fugiat id illo iste laboriosam magnam nulla odit placeat possimus provident quibusdam quisquam ratione recusandae, rem reprehenderit sequi, similique sint temporibus voluptate voluptatem! Deserunt fuga nostrum optio! Alias culpa cupiditate dolorem eligendi itaque iure necessitatibus nihil provident quae, repellendus sed, similique tempore totam! Magnam nemo perspiciatis placeat quas. Accusamus cum distinctio hic necessitatibus officiis? Eligendi est nisi, nulla pariatur praesentium ratione repellendus! Ab ad at cum, doloremque eligendi impedit laboriosam, magnam maxime, nam nihil nostrum officiis perferendis quibusdam repellat repudiandae sapiente tenetur voluptatum. A dicta dolor enim, harum quo velit vero voluptate. Aliquid, animi aspernatur, autem distinctio dolores enim impedit itaque praesentium quod repellat tempore temporibus? Cum dolorum maxime necessitatibus, odio quidem similique totam voluptatibus? Commodi eum excepturi fuga id ipsam nam officia quaerat, voluptatum! A at blanditiis commodi deleniti dignissimos eaque ex impedit ipsum modi, odit officia perspiciatis, praesentium, quod recusandae reprehenderit ullam voluptatum! Ab asperiores autem deserunt dignissimos, dolore dolores est fugiat in ipsum magnam maiores molestiae mollitia odit omnis pariatur rem unde voluptate. Atque mollitia praesentium recusandae sit velit! Aliquid est facere mollitia nesciunt pariatur quas quos ratione recusandae reiciendis repellendus, tempore vitae voluptate, voluptatibus! Cum deleniti dolor eligendi fugit maiores placeat provident, quaerat recusandae similique voluptas. A ad adipisci aliquam architecto commodi deserunt dignissimos dolorum eum ex expedita facere, id, in laboriosam molestias nobis numquam pariatur perferendis porro quasi, quisquam quo repellendus reprehenderit sequi sint tempora vel voluptate? Adipisci illum mollitia non odit reprehenderit repudiandae rerum?
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem beatae consequatur eaque eligendi eos facilis impedit in ipsam magnam nesciunt nisi omnis praesentium saepe sed sequi, voluptatem voluptatibus. Nam!
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>jquery-ajax</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script>
+    $(()=>{
+      this.data=null
+      $.get("http://localhost:63342/1000phone/com/qianfeng/day0513/data.json",(data)=>{
+        this.data=data
+        for (let arg of data) {
+          if(arg.parent==="0"){
+            $("select:eq(0)").append($("<option value='"+arg.id+"'>"+arg.name+"</option>"))
+          }
+        }
+      })
+
+      $("select:eq(0)").change((e)=>{
+        let parentId=$(e.target).val()
+        if(data!=null){
+          let select=$("select:eq(1)")
+          select.children("option:not(:first)").remove()
+          $("select:eq(2)").children("option:not(:first)").remove()
+          for (const arg of data) {
+            if(arg.parent===parentId){
+              select.append($("<option value='"+arg.id+"'>"+arg.name+"</option>"))
+            }
+          }
+        }
+      })
+
+      $("select:eq(1)").change((e)=>{
+        let parentId=$(e.target).val()
+        if(data!=null){
+          let select=$("select:eq(2)")
+          select.children("option:not(:first)").remove()
+          for (const arg of data) {
+            if(arg.parent===parentId){
+              select.append($("<option value='"+arg.id+"'>"+arg.name+"</option>"))
+            }
+          }
+        }
+      })
+
+    })
+  </script>
+</head>
+<body>
+<label>
+  <select>
+    <option value="-1">===请选择===</option>
+  </select>
+</label>
+<label>
+  <select>
+    <option value="-1">===请选择===</option>
+  </select>
+</label>
+<label>
+  <select>
+    <option value="-1">===请选择===</option>
+  </select>
+</label>
+</body>
+</html>
