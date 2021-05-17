@@ -21,7 +21,7 @@ import java.util.Date;
 @WebServlet({"/api/user/list", "/api/user/add","/api/user/update","/api/user/delete"})
 public class UserController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter out = resp.getWriter();
         //保存要输出的对象
         Object respObject=null;
@@ -36,13 +36,13 @@ public class UserController extends HttpServlet {
                 //id为空则返回全部列表(查多个
                 respObject = service.list();
             }
-            out.print(JSON.toJSONString(respObject));
-            out.close();
         }
+        out.print(JSON.toJSONString(respObject));
+        out.close();
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         //增删改都需要用POST方法提交
         PrintWriter out = resp.getWriter();
         String uri=req.getRequestURI();
@@ -54,8 +54,6 @@ public class UserController extends HttpServlet {
         //处理请求
         Object respObject = "Not Acceptable";
         UserService service=new UserServiceImpl();
-        System.out.println(uri);
-        System.out.println(id);
         if (id!=null&&id.length()>0){
             // id不为空和空串，则删除或修改
             User user = new User(Integer.parseInt(id),name,password,tel,new Date());
